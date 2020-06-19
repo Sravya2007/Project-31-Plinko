@@ -7,7 +7,6 @@ var particles = [];
 var plinkos = [];
 var divisions = [];
 var divisionHeight = 300;
-var width = this.width;
 var ground;
 
 function setup() {
@@ -22,7 +21,6 @@ function draw() {
   background("black");
   Engine.update(engine);
 
-  
   if(frameCount % 60 === 0){
     particles.push(new Particle(random(width/2 - 10, width/2 + 10), 10, 10));
   }
@@ -43,11 +41,9 @@ function draw() {
     plinkos.push(new Plinko(j, 275));
   }
 
-  for(var j = -35; j <= width; j = j + 50){
+  for(var j = -35; j <= width - 30; j = j + 50){
     plinkos.push(new Plinko(j, 375));
   }
-
-  ground.display();
 
   for(var a = 0; a < particles.length; a ++){
     particles[a].display();
@@ -60,4 +56,6 @@ function draw() {
   for(var j = 0; j < plinkos.length; j ++){
     plinkos[j].display();
   }
+
+  ground.display();
 }
